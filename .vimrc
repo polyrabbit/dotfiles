@@ -24,12 +24,17 @@ Bundle 'pyflakes.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-surround'
 Bundle 'skammer/vim-css-color'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 " Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on
 syntax on
 
 set nocompatible
-set path+=/usr/lib/python2.7/**
+if has("gui_win32")
+    set path+=C:/Python27/Lib/**
+else
+    set path+=/usr/lib/python2.7/**
+end
 
 "set nu
 set rnu
@@ -61,7 +66,8 @@ set noerrorbells
 
 cmap w!! w !sudo tee > /dev/null %
 " easy for copy-paste
-nnoremap ! "+
+nmap ! "+
+vmap ! "+
 
 " easier navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -84,7 +90,7 @@ end
 set autochdir
 set foldenable
 " set foldcolumn=3
-autocmd FileType python setlocal foldmethod=indent
+" autocmd FileType python setlocal foldmethod=indent
 set foldlevelstart=99
 
 set completeopt=preview,menu
@@ -119,7 +125,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 set tags=tags;/
 " taglist
 if has("gui_win32")
-    let Tlist_Ctags_Cmd = $HOME . '/vimfiles/ctags'
+    let g:tagbar_ctags_bin="~/ctags.exe"
 end
 " let Tlist_Show_One_File = 1
 " let Tlist_Exit_OnlyWindow = 1
@@ -131,15 +137,25 @@ end
 " let Tlist_Display_Prototype = 1
 " let Tlist_Auto_Open=1 
 
+" map p to be the key of preview like tagbar
+let g:NERDTreeMapJumpParent = 'gp'
+let g:NERDTreeMapPreview = 'p'
+
+let g:pyflakes_use_quickfix = 0
+
 " Tagbar uses CursorHold event to toggle autoupdate the current tag, 
 " whose period is updatetime(default 4000)
 set updatetime=1000
-nmap <F3> :TagbarToggle<cr>
+" sorted according to their order in the source file, not by name.
+let g:tagbar_sort = 0
+let g:tagbar_autofocus = 1
 
+nmap <F3> :TagbarToggle<cr>
+nmap <f4> :GundoToggle<cr>
 nmap <F2> :NERDTreeToggle<cr>
 
 nmap gb :CtrlPBuffer<cr>
-let g:ctrlp_by_filename = 1
+" let g:ctrlp_by_filename = 1
 let g:ctrlp_follow_symlinks=1
 
 noremap 00 :CtrlPMRU<CR>
