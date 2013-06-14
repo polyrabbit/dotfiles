@@ -5,6 +5,7 @@ source $VIMRUNTIME/vimrc_example.vim
 " behave mswin
 
 set rtp+=~/.vim/bundle/vundle/
+" set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 call vundle#rc()
 " let Vundle manage Vundle
 " required! 
@@ -21,10 +22,13 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tComment'
 Bundle 'FuDesign2008/AutoClose.vim'
 Bundle 'pyflakes.vim'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-surround'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'skammer/vim-css-color'
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+" Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/syntastic'
+" Bundle 'troydm/easytree.vim'
 " Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on
 syntax on
@@ -36,7 +40,7 @@ else
     set path+=/usr/lib/python2.7/**
 end
 
-"set nu
+" set nu
 set rnu
 
 set tabstop=4
@@ -103,9 +107,8 @@ else
 endif
 highlight SpellBad term=underline gui=undercurl guisp=Orange 
 
-
 set laststatus=2
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'compatible'
 
 set completeopt-=preview
 " NeoComplCache
@@ -140,8 +143,15 @@ end
 " map p to be the key of preview like tagbar
 let g:NERDTreeMapJumpParent = 'gp'
 let g:NERDTreeMapPreview = 'p'
+" for Java
+let g:NERDTreeCasadeOpenSingleChildDir=1
+let g:NERDTreeChDirMode=2
 
 let g:pyflakes_use_quickfix = 0
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_highlighting = 0
 
 " Tagbar uses CursorHold event to toggle autoupdate the current tag, 
 " whose period is updatetime(default 4000)
@@ -160,6 +170,7 @@ let g:ctrlp_follow_symlinks=1
 
 noremap 00 :CtrlPMRU<CR>
 let g:ctrlp_open_multiple_files = 'v'
+let g:ctrlp_mruf_max = 250
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
@@ -168,6 +179,9 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set encoding=utf-8
+" it conflicts with powerline currently
+" autocmd bufwritepost .vimrc source $MYVIMRC 
 
 if has("gui_gtk2")
 	set guifont=Courier\ 10\ Pitch\ 11 
