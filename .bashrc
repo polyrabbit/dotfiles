@@ -108,10 +108,10 @@ fi
 
 alias gvim='gvim 2>/dev/null'
 alias vim='vim 2>/dev/null'
+shopt -s cdspell
 export CLICOLOR="xterm-color"
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 export PS1='\[\e[32;1m\]${debian_chroot:+($debian_chroot)}\u\[\e[36;1m\]:\w\$ \[\e[0m\]'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 set completion-ignore-case on
-alias t="/home/poly/workspace/ansible/devops-ansible/hacking/test-module"

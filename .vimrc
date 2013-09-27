@@ -23,11 +23,13 @@ Bundle 'tComment'
 Bundle 'FuDesign2008/AutoClose.vim'
 Bundle 'pyflakes.vim'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'skammer/vim-css-color'
 " Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
+Bundle 'rosenfeld/conque-term'
+" Bundle 'scrooloose/syntastic'
 " Bundle 'troydm/easytree.vim'
 " Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on
@@ -40,7 +42,8 @@ else
     set path+=/usr/lib/python2.7/**
 end
 
-" set nu
+set rnu
+set nu
 set rnu
 
 set tabstop=4
@@ -68,7 +71,6 @@ set mousemodel=popup
 set showcmd
 set noerrorbells
 
-cmap w!! w !sudo tee > /dev/null %
 " easy for copy-paste
 nmap ! "+
 vmap ! "+
@@ -172,14 +174,15 @@ noremap 00 :CtrlPMRU<CR>
 let g:ctrlp_open_multiple_files = 'v'
 let g:ctrlp_mruf_max = 250
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git)$',
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set encoding=utf-8
+" set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+" set encoding=utf-8
+
 " it conflicts with powerline currently
 " autocmd bufwritepost .vimrc source $MYVIMRC 
 
