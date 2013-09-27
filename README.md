@@ -1,6 +1,6 @@
-dotfiles
-========
+#dotfiles
+### install.sh
+Copy dotfiles to your home directory.
 
-run `git clone git@github.com:polyrabbit/dotfiles.git && cd dotfiles && bash install.sh`
-
-backups can be found in /tmp
+### provision.sh
+Provision a newly-installed computer.
