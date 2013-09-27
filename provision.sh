@@ -1,17 +1,25 @@
 #!/usr/bin/env bash
 
+error() {
+    echo -e "\e[31m$@\e[0m" 1>&2
+}
+
+info() {
+    echo -e "\e[32m$@\e[0m" 1>&2
+}
+
 is_success() {
     if [ "$?" -gt 0 ]; then
-        echo Something is wrong while installing $1
+        error Something is wrong while installing $1
         exit 1
     fi
 }
 
 apt_install() {
     if which "$1" &>/dev/null; then
-        echo "$1" already exists
+        info "$1" already exists
     else
-        echo Installing "$1"
+        info Installing "$1"
         apt-get install "$1" -y
         is_success "$1"
     fi
@@ -49,7 +57,7 @@ for pkg in ${python_pkgs[@]}; do
 done
 
 if [ -d ~/.oh-my-zsh ]; then
-    echo oh-my-zsh already exists
+    info oh-my-zsh already exists
 else
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
