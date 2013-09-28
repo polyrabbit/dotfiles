@@ -32,6 +32,7 @@ pip_install() {
 
 apt_pkgs=(
 git
+zsh
 python-vte
 vim-gtk
 python-dev
