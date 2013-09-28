@@ -48,6 +48,7 @@ ctags
 python_pkgs=(
 virtualenv
 virtualenvwrapper
+gevent
 )
 
 for pkg in ${apt_pkgs[@]}; do
