@@ -26,6 +26,7 @@ apt_install() {
 }
 
 pip_install() {
+    info Installing "$1"
     pip install "$1"
     is_success "$1"
 }
