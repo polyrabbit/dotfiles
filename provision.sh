@@ -34,6 +34,8 @@ pip_install() {
 apt_pkgs=(
 git
 zsh
+python-pip
+tmux
 python-vte
 vim-gtk
 python-dev
@@ -42,7 +44,6 @@ autojump
 libreoffice
 fcitx
 fcitx-table-wbpy
-python-pip
 ctags
 )
 python_pkgs=(
