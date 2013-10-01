@@ -52,6 +52,8 @@ virtualenvwrapper
 gevent
 )
 
+cd `dirname $0`
+
 for pkg in ${apt_pkgs[@]}; do
     apt_install $pkg
 done
@@ -59,6 +61,18 @@ done
 for pkg in ${python_pkgs[@]}; do
     pip_install $pkg
 done
+
+# Append my pub-key
+if [ -f id_rsa.pub ]; then
+    mkdir -p ~/.ssh
+    pub_key=`cat id_rsa.pub`
+    if grep -q "$pub_key" ~/.ssh/authorized_keys; then
+        info You\'re already the boss
+    else
+        info Appending public key
+        echo $pub_key >>~/.ssh/authorized_keys
+    fi
+fi
 
 if [ -d ~/.oh-my-zsh ]; then
     info oh-my-zsh already exists
