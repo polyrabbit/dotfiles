@@ -52,6 +52,11 @@ virtualenvwrapper
 gevent
 )
 
+if [ $UID -ne 0 ]; then
+    error 'Superuser privileges are required to run this script.'
+    exit 1
+fi
+
 cd `dirname $0`
 
 for pkg in ${apt_pkgs[@]}; do
@@ -80,3 +85,5 @@ else
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 
+info Changing poly\'s shell to zsh
+chsh -s /bin/zsh poly
