@@ -43,8 +43,6 @@ else
 end
 
 set rnu
-set nu
-set rnu
 
 set tabstop=4
 set shiftwidth=4
@@ -61,6 +59,12 @@ set cursorline
 set nobackup
 set noswapfile
 set nowritebackup
+
+set hidden  "don't unload buffer when it is abandoned
+set undodir=/tmp
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 " Set <leader>
 " search reversely, opposite to ;
