@@ -36,6 +36,7 @@ git
 zsh
 python-pip
 tmux
+gitk
 python-vte
 vim-gtk
 python-dev
