@@ -14,9 +14,13 @@ fi
 
 cd `dirname $0`
 
-for file in $(find . -maxdepth 1 -name '*rc' -type f); do
-    info copying $file to $HOME
-    cp -a $file $HOME
+configs=(.bashrc .vimrc .zshrc .gitconfig)
+
+for file in ${configs[@]}; do
+    if [ -e $file ]; then
+        info copying $file to $HOME
+        cp -a $file $HOME
+    fi
 done
 
 # Append my pub-key
