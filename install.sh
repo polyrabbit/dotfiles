@@ -51,6 +51,7 @@ python_pkgs=(
 virtualenv
 virtualenvwrapper
 gevent
+dnslib
 )
 
 if [ $UID -ne 0 ]; then
