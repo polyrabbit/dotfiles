@@ -14,7 +14,7 @@ fi
 
 cd `dirname $0`
 
-configs=(.bashrc .vimrc .zshrc .gitconfig)
+configs=(.bashrc .vimrc .zshrc .gitconfig .tmux.conf)
 
 for file in ${configs[@]}; do
     if [ -e $file ]; then
