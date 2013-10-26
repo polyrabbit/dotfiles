@@ -50,6 +50,6 @@ fi
 if [ -d ~/.vim/bundle/vundle ]; then
     info vundle already exists
 else
-    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi
 
