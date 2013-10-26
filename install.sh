@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 error() {
-    echo -e "\e[31m$@\e[0m" 1>&2
+    echo -e ${@: 1:${#@}-1} "\e[31m${@: -1:1}\e[0m" 1>&2
 }
 
 info() {
-    echo -e "\e[32m$@\e[0m" 1>&2
+    echo -e ${@: 1:${#@}-1} "\e[32m${@: -1:1}\e[0m" 1>&2
 }
 
 is_success() {
