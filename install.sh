@@ -10,14 +10,14 @@ info() {
 
 is_success() {
     if [ "$?" -gt 0 ]; then
-        error Something is wrong while installing $1
+        error "Something is wrong while installing $1"
         exit 1
     fi
 }
 
 apt_install() {
     if dpkg -l "$1" &>/dev/null; then
-        info "$1" already exists
+        info "$1 already exists"
     else
         info Installing "$1"
         apt-get install "$1" -y

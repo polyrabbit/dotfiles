@@ -49,7 +49,7 @@ else
 fi
 
 if [ ${SHELL:(-3)} != zsh ]; then
-    info "Changing poly\'s shell to zsh"
+    info "Changing poly's shell to zsh"
     chsh -s /bin/zsh poly
 fi
 
