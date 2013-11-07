@@ -16,7 +16,7 @@ is_success() {
 }
 
 apt_install() {
-    if which "$1" &>/dev/null; then
+    if dpkg -l "$1" &>/dev/null; then
         info "$1" already exists
     else
         info Installing "$1"
