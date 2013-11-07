@@ -9,13 +9,13 @@ info() {
 }
 
 if [ $UID -eq 0 ]; then
-    error -n 'Why are you run as root, continue [y/N]? '
+    error -n "Why are you run as root, continue [y/N]? "
     read c
     if [ "$c" != 'y' -a "$c" != 'Y' -a "$c" != 'yes' -a "$c" != 'YES' ]; then
-        error 'Aborted'
+        error "Aborted"
         exit 1
     fi
-    info 'Provisioning root'
+    info "Provisioning root"
 fi
 
 cd `dirname $0`
@@ -24,7 +24,7 @@ configs=(.bashrc .vimrc .zshrc .gitconfig .tmux.conf)
 
 for file in ${configs[@]}; do
     if [ -e $file ]; then
-        info copying $file to $HOME
+        info "copying $file to $HOME"
         cp -a $file $HOME
     fi
 done
@@ -35,9 +35,9 @@ if [ -f id_rsa.pub ]; then
     pub_key=`cat id_rsa.pub`
     key_path=~/.ssh/authorized_keys
     if [ -f $key_path ] && grep -q "$pub_key" $key_path; then
-        info You\'re already the boss
+        info "Key authorized, you\'re already the boss"
     else
-        info Appending public key
+        info "Appending public key"
         echo $pub_key >>$key_path
     fi
 fi
