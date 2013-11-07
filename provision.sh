@@ -35,7 +35,7 @@ if [ -f id_rsa.pub ]; then
     pub_key=`cat id_rsa.pub`
     key_path=~/.ssh/authorized_keys
     if [ -f $key_path ] && grep -q "$pub_key" $key_path; then
-        info "Key authorized, you\'re already the boss"
+        info "Key authorized, you're already the boss"
     else
         info "Appending public key"
         echo $pub_key >>$key_path
@@ -45,7 +45,7 @@ fi
 if [ -d ~/.oh-my-zsh ]; then
     info "oh-my-zsh already exists"
 else
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O- | sh
 fi
 
 if [ ${SHELL:(-3)} != zsh ]; then
