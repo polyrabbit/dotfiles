@@ -39,6 +39,7 @@ openssh-server
 tmux
 gitk
 python-vte
+vim
 vim-gtk
 python-dev
 libevent-dev
