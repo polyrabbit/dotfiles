@@ -35,6 +35,7 @@ apt_pkgs=(
 git
 zsh
 python-pip
+openssh-server
 tmux
 gitk
 python-vte
