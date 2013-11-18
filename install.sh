@@ -19,14 +19,14 @@ apt_install() {
     if dpkg -l "$1" &>/dev/null; then
         info "$1 already exists"
     else
-        info Installing "$1"
+        info "Installing $1"
         apt-get install "$1" -y
         is_success "$1"
     fi
 }
 
 pip_install() {
-    info Installing "$1"
+    info "Installing $1"
     pip install "$1"
     is_success "$1"
 }
@@ -42,10 +42,10 @@ vim-gtk
 python-dev
 libevent-dev
 autojump
-libreoffice
 fcitx
 fcitx-table-wbpy
 ctags
+libreoffice
 )
 python_pkgs=(
 virtualenv
