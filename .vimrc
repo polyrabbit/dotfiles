@@ -61,7 +61,10 @@ set noswapfile
 set nowritebackup
 
 set hidden  "don't unload buffer when it is abandoned
-set undodir=/tmp
+if !isdirectory("/tmp/.vimundodir")
+    call mkdir("/tmp/.vimundodir", "p")
+endif
+set undodir=/tmp/.vimundodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
