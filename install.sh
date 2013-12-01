@@ -32,7 +32,7 @@ pip_install() {
 }
 
 apt_pkgs=(
-git
+git-core
 zsh
 python-pip
 openssh-server
