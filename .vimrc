@@ -187,7 +187,9 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 
-" set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+" fileencoding为文件的编码, fileencodings为尝试的编码, encoding为vim内部编码
+" http://edyfox.codecarver.org/html/vim_fileencodings_detection.html
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 " set encoding=utf-8
 
 " it conflicts with powerline currently
