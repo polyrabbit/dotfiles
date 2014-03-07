@@ -41,7 +41,7 @@ ZSH_THEME="fletcherm"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip)
+plugins=(git pip, autojump virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,9 +56,6 @@ alias l='ls -CF'
 JAVA_HOME='/usr/lib/java/jdk1.7.0_25'
 CLASSPATH='.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar'
 export PATH=$JAVA_HOME/bin:$PATH
-
-source /usr/local/bin/virtualenvwrapper.sh
-[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
 
 autoload -U compinit && compinit -u
 alias gvim='gvim 2>/dev/null'
