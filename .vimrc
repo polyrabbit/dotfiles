@@ -29,6 +29,7 @@ Bundle 'skammer/vim-css-color'
 " Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rosenfeld/conque-term'
+Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'scrooloose/syntastic'
 " Bundle 'troydm/easytree.vim'
 " Bundle 'Valloric/YouCompleteMe'
@@ -71,7 +72,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 " Set <leader>
 " search reversely, opposite to ;
-" let mapleader = ","
+let mapleader = ","
 
 set mousemodel=popup
 " 在状态栏显示正在输入的命令
