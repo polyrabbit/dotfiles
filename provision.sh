@@ -50,7 +50,7 @@ fi
 
 if [ ${SHELL:(-3)} != zsh ]; then
     info "Changing poly's shell to zsh"
-    chsh -s /bin/zsh poly
+    chsh -s /bin/zsh
 fi
 
 if [ -d ~/.vim/bundle/vundle ]; then
