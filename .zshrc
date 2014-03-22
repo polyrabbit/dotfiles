@@ -53,9 +53,9 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # java stuff
-JAVA_HOME='/usr/lib/java/jdk1.7.0_25'
-CLASSPATH='.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar'
-export PATH=$JAVA_HOME/bin:$PATH
+# JAVA_HOME='/usr/lib/java/jdk1.7.0_25'
+# CLASSPATH='.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar'
+# export PATH=$JAVA_HOME/bin:$PATH
 
 autoload -U compinit && compinit -u
 
