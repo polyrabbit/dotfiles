@@ -45,8 +45,8 @@ plugins=(git pip autojump virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+# Ensure /usr/local/bin occurs before /usr/bin for the sake of Homebrew
+export PATH=/usr/local/bin:$PATH
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
