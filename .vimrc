@@ -29,6 +29,7 @@ Bundle 'skammer/vim-css-color'
 " Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rosenfeld/conque-term'
+Bundle 'TeTrIs.vim'
 
 Bundle 'Lokaltog/vim-easymotion'
 " Bind togather, much easier to modify
