@@ -15,7 +15,6 @@ Bundle 'Gundo'
 Bundle 'neocomplcache'
 "Bundle 'liancheng/snipmate-snippets'
 " Bundle 'taglist.vim'
-Bundle 'majutsushi/tagbar'
 " Bundle 'fholgado/minibufexpl.vim'
 Bundle 'The-NERD-tree'
 Bundle 'kien/ctrlp.vim'
@@ -137,7 +136,7 @@ else
     autocmd FileType python inoremap <F5> <Esc>:w<cr>:pyfile %<CR>
 end
 
-set autochdir
+" set autochdir
 set foldenable
 " set foldcolumn=3
 " autocmd FileType python setlocal foldmethod=indent
@@ -171,11 +170,6 @@ let g:neocomplcache_enable_wildcard = 1
 let g:neocomplcache_enable_auto_close_preview = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-set tags=tags;/
-" taglist
-if has("gui_win32")
-    let g:tagbar_ctags_bin="~/ctags.exe"
-end
 " let Tlist_Show_One_File = 1
 " let Tlist_Exit_OnlyWindow = 1
 " let Tlist_Use_Right_Window = 1
@@ -199,14 +193,20 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_highlighting = 0
 
+Bundle 'majutsushi/tagbar'
+" see http://stackoverflow.com/a/5019111
+set tags=./tags,./TAGS,tags;/,TAGS;/
+if has("gui_win32")
+    let g:tagbar_ctags_bin="~/ctags.exe"
+end
 " Tagbar uses CursorHold event to toggle autoupdate the current tag, 
 " whose period is updatetime(default 4000)
 set updatetime=1000
 " sorted according to their order in the source file, not by name.
 let g:tagbar_sort = 0
 let g:tagbar_autofocus = 1
-
 nmap <F3> :TagbarToggle<cr>
+
 nmap <f4> :GundoToggle<cr>
 nmap <F2> :NERDTreeToggle<cr>
 
