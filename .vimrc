@@ -136,7 +136,7 @@ else
     autocmd FileType python inoremap <F5> <Esc>:w<cr>:pyfile %<CR>
 end
 
-" set autochdir
+set autochdir
 set foldenable
 " set foldcolumn=3
 " autocmd FileType python setlocal foldmethod=indent
