@@ -39,6 +39,8 @@ let g:EasyMotion_smartcase = 1
 " Bundle 'troydm/easytree.vim'
 " Bundle 'Valloric/YouCompleteMe'
 
+" Bundle 'SirVer/ultisnips' " worth a try
+
 Bundle 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
             \ ['brown',       'RoyalBlue3'],
