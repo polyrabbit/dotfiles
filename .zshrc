@@ -66,8 +66,11 @@ alias free='free -m'
 alias http='python -m SimpleHTTPServer'
 alias sudo='sudo -E'
 
+alias tn='notify-send done'
 if [[ $(uname) == "Darwin" ]]; then
     alias mchrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-agent="Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53"'
+    # time-consuming command; tn
+    alias tn='terminal-notifier -message done -sound  default'
 fi
 
 export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
