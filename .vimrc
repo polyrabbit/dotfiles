@@ -20,15 +20,25 @@ Bundle 'The-NERD-tree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tComment'
 Bundle 'FuDesign2008/AutoClose.vim'
-Bundle 'pyflakes.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
 Bundle 'skammer/vim-css-color'
 " Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'rosenfeld/conque-term'
+" Bundle 'rosenfeld/conque-term'
 Bundle 'TeTrIs.vim'
+
+Bundle 'bling/vim-airline'
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_c = '%{getcwd()}/%t'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+" let g:airline_branch_prefix = ' ⎇'
+let g:airline_detect_paste=1
+let g:airline_detect_modified=0
+let g:airline_detect_iminsert=0
+
 
 Bundle 'Lokaltog/vim-easymotion'
 " Bind togather, much easier to modify
@@ -88,6 +98,7 @@ set expandtab
 set autoindent
 " 方便在开启了et后使用退格（backspace）键，每次退格将删除X个空格
 set softtabstop=4
+set t_Co=256
 
 " autoload
 set autoread
@@ -152,9 +163,10 @@ if has("gui_running")
 else
     colorscheme desert
 endif
-highlight SpellBad term=underline gui=undercurl guisp=Orange 
+" highlight SpellBad term=underline gui=undercurl guisp=Orange 
 
 set laststatus=2
+Bundle 'pyflakes.vim'
 let g:Powerline_symbols = 'compatible'
 
 set completeopt-=preview
@@ -180,7 +192,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " let Tlist_Inc_Winwidth=0
 " let Tlist_GainFocus_On_ToggleOpen = 1
 " let Tlist_Display_Prototype = 1
-" let Tlist_Auto_Open=1 
+" let Tlist_Auto_Open=1
 
 " map p to be the key of preview like tagbar
 let g:NERDTreeMapJumpParent = 'gp'
@@ -189,7 +201,7 @@ let g:NERDTreeMapPreview = 'p'
 let g:NERDTreeCasadeOpenSingleChildDir=1
 let g:NERDTreeChDirMode=2
 
-let g:pyflakes_use_quickfix = 0
+let g:pyflakes_use_quickfix = 1
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list = 1
