@@ -42,6 +42,10 @@ if [ -f id_rsa.pub ]; then
     fi
 fi
 
+if ! which zsh &>/dev/null; then
+    sudo apt-get install zsh -y;
+fi
+
 if [ -d ~/.oh-my-zsh ]; then
     info "oh-my-zsh already exists"
 else
