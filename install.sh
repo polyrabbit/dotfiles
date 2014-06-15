@@ -48,6 +48,7 @@ fcitx
 fcitx-table-wbpy
 ctags
 libreoffice
+htop
 )
 python_pkgs=(
 virtualenv
