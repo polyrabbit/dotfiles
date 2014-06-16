@@ -47,6 +47,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Ensure /usr/local/bin occurs before /usr/bin for the sake of Homebrew
 export PATH=/usr/local/bin:$PATH
+export EDITOR=vim
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
