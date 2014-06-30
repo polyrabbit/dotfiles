@@ -207,6 +207,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_highlighting = 0
 
+Bundle 'argtextobj.vim'
+
 Bundle 'majutsushi/tagbar'
 " see http://stackoverflow.com/a/5019111
 set tags=./tags,./TAGS,tags;/,TAGS;/
@@ -237,6 +239,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git)$',
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
+
+cmap w!! w !sudo tee % >/dev/null
 
 " fileencoding为文件的编码, fileencodings为尝试的编码, encoding为vim内部编码
 " http://edyfox.codecarver.org/html/vim_fileencodings_detection.html
