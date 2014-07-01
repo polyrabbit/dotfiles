@@ -208,6 +208,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_highlighting = 0
 
 Bundle 'argtextobj.vim'
+Bundle 'unimpaired.vim'
 
 Bundle 'majutsushi/tagbar'
 " see http://stackoverflow.com/a/5019111
