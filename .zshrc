@@ -41,9 +41,10 @@ ZSH_THEME="fletcherm"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip autojump brew brew-cask sudo)
+plugins=(git pip autojump brew brew-cask sudo osx)
 
 source $ZSH/oh-my-zsh.sh
+export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
 
 # Ensure /usr/local/bin occurs before /usr/bin for the sake of Homebrew
 export PATH=/usr/local/bin:$PATH
