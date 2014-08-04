@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o nounset
 # http://www.alittlemadness.com/2006/05/24/bash-tip-exit-on-error/
 set -o errexit
 
