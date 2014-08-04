@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# http://www.alittlemadness.com/2006/05/24/bash-tip-exit-on-error/
+set -o errexit
 
 error() {
     echo -e ${@: 1:${#@}-1} "\e[31m${@: -1:1}\e[0m" 1>&2
