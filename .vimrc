@@ -12,7 +12,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'polyrabbit/molokai'
 Bundle 'Gundo'
-Bundle 'neocomplcache'
 "Bundle 'liancheng/snipmate-snippets'
 " Bundle 'taglist.vim'
 " Bundle 'fholgado/minibufexpl.vim'
@@ -28,6 +27,28 @@ Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-fugitive'
 " Bundle 'rosenfeld/conque-term'
 Bundle 'TeTrIs.vim'
+
+Bundle 'neocomplcache'
+set completeopt-=preview
+" NeoComplCache
+let g:neocomplcache_enable_at_startup=1
+"let g:neoComplcache_disableautocomplete=1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 1
+let g:neocomplcache_min_keyword_length = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_display_parameter = 1
+let g:neocomplcache_enable_wildcard = 1
+let g:neocomplcache_enable_auto_close_preview = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 Bundle 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
@@ -169,21 +190,6 @@ set laststatus=2
 Bundle 'pyflakes.vim'
 let g:Powerline_symbols = 'compatible'
 
-set completeopt-=preview
-" NeoComplCache
-let g:neocomplcache_enable_at_startup=1
-"let g:neoComplcache_disableautocomplete=1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 1
-let g:neocomplcache_min_keyword_length = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_display_parameter = 1
-let g:neocomplcache_enable_wildcard = 1
-let g:neocomplcache_enable_auto_close_preview = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
 " let Tlist_Show_One_File = 1
 " let Tlist_Exit_OnlyWindow = 1
 " let Tlist_Use_Right_Window = 1
@@ -209,6 +215,8 @@ let g:syntastic_enable_highlighting = 0
 
 Bundle 'argtextobj.vim'
 Bundle 'unimpaired.vim'
+" Bundle 'valloric/MatchTagAlways'
+Bundle 'gregsexton/MatchTag'
 
 Bundle 'majutsushi/tagbar'
 " see http://stackoverflow.com/a/5019111
