@@ -176,8 +176,6 @@ set foldenable
 " autocmd FileType python setlocal foldmethod=indent
 set foldlevelstart=99
 
-set completeopt=preview,menu
-
 let g:molokai_original = 1
 if has("gui_running")
     colorscheme molokai
