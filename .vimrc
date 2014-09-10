@@ -10,13 +10,14 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+
+" Set <leader>
+" search reversely, opposite to ;
+let mapleader = ","
+
 Bundle 'polyrabbit/molokai'
 Bundle 'Gundo'
 "Bundle 'liancheng/snipmate-snippets'
-" Bundle 'taglist.vim'
-" Bundle 'fholgado/minibufexpl.vim'
-Bundle 'The-NERD-tree'
-Bundle 'kien/ctrlp.vim'
 Bundle 'tComment'
 Bundle 'FuDesign2008/AutoClose.vim'
 Bundle 'tpope/vim-surround'
@@ -66,7 +67,6 @@ Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = ','
 let g:EasyMotion_smartcase = 1
 
-" Bundle 'scrooloose/syntastic'
 " Bundle 'troydm/easytree.vim'
 " Bundle 'Valloric/YouCompleteMe'
 
@@ -104,11 +104,6 @@ filetype plugin indent on
 syntax on
 
 set nocompatible
-if has("gui_win32")
-    set path+=C:/Python27/Lib/**
-else
-    set path+=/usr/lib/python2.7/**
-end
 
 set rnu
 set nowrap
@@ -139,10 +134,6 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
-" Set <leader>
-" search reversely, opposite to ;
-" let mapleader = ","
-
 set mousemodel=popup
 " 在状态栏显示正在输入的命令
 set showcmd
@@ -162,14 +153,6 @@ nnoremap <C-down> <C-w>+
 nnoremap <C-left> <C-w>>
 nnoremap <C-right> <C-w><
 
-if has("gui_win32")
-    autocmd FileType python noremap <F5> :w<cr>:!start cmd /c % & pause<CR>
-    autocmd FileType python inoremap <F5> <Esc>:w<cr>:!start cmd /c % & pause<CR>
-else
-    autocmd FileType python noremap <F5> :w<cr>:pyfile %<CR>
-    autocmd FileType python inoremap <F5> <Esc>:w<cr>:pyfile %<CR>
-end
-
 set autochdir
 set foldenable
 " set foldcolumn=3
@@ -185,8 +168,6 @@ endif
 " highlight SpellBad term=underline gui=undercurl guisp=Orange 
 
 set laststatus=2
-Bundle 'pyflakes.vim'
-let g:Powerline_symbols = 'compatible'
 
 " let Tlist_Show_One_File = 1
 " let Tlist_Exit_OnlyWindow = 1
@@ -198,6 +179,7 @@ let g:Powerline_symbols = 'compatible'
 " let Tlist_Display_Prototype = 1
 " let Tlist_Auto_Open=1
 
+Bundle 'The-NERD-tree'
 " map p to be the key of preview like tagbar
 let g:NERDTreeMapJumpParent = 'gp'
 let g:NERDTreeMapPreview = 'p'
@@ -205,11 +187,15 @@ let g:NERDTreeMapPreview = 'p'
 let g:NERDTreeCasadeOpenSingleChildDir=1
 let g:NERDTreeChDirMode=2
 
-let g:pyflakes_use_quickfix = 1
+" Bundle 'scrooloose/syntastic'
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_enable_highlighting = 0
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_enable_highlighting = 0
+autocmd BufRead *.py nmap <leader>r :w<CR>:!python %<CR>
+
+Bundle 'pyflakes.vim'
+" let g:pyflakes_use_quickfix = 1
 
 Bundle 'argtextobj.vim'
 Bundle 'unimpaired.vim'
@@ -233,6 +219,7 @@ nmap <F3> :TagbarToggle<cr>
 nmap <f4> :GundoToggle<cr>
 nmap <F2> :NERDTreeToggle<cr>
 
+Bundle 'kien/ctrlp.vim'
 nmap gb :CtrlPBuffer<cr>
 " let g:ctrlp_by_filename = 1
 let g:ctrlp_follow_symlinks=1
@@ -253,9 +240,6 @@ cmap w!! w !sudo tee % >/dev/null
 " http://edyfox.codecarver.org/html/vim_fileencodings_detection.html
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 " set encoding=utf-8
-
-" it conflicts with powerline currently
-" autocmd bufwritepost .vimrc source $MYVIMRC 
 
 if has("gui_gtk2")
 	set guifont=Courier\ 10\ Pitch\ 11 
