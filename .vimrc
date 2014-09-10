@@ -194,6 +194,12 @@ let g:NERDTreeChDirMode=2
 
 autocmd BufRead *.py nmap <leader>r :w<CR>:!python %<CR>
 
+" see http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
+au FileType qf call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
+
 Bundle 'pyflakes.vim'
 " let g:pyflakes_use_quickfix = 1
 
