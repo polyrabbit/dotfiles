@@ -38,26 +38,17 @@ apt_pkgs=(
 git-core
 zsh
 python-pip
-openssh-server
 tmux
-gitk
-python-vte
 vim
-vim-gtk
 python-dev
 libevent-dev
 autojump
-fcitx
-fcitx-table-wbpy
 ctags
-libreoffice
 htop
 )
 python_pkgs=(
 virtualenv
 virtualenvwrapper
-gevent
-dnslib
 )
 
 if [ $UID -ne 0 ]; then
