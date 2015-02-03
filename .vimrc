@@ -1,35 +1,42 @@
 " git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " git clone http://github.com/gmarik/vundle.git "%USERPROFILE%/.vim/bundle/vundle"
-source $VIMRUNTIME/vimrc_example.vim
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" source $VIMRUNTIME/vimrc_example.vim
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
 
 set rtp+=~/.vim/bundle/vundle/
-" set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-call vundle#rc()
+call vundle#begin()
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Set <leader>
 " search reversely, opposite to ;
 let mapleader = ","
 
-Bundle 'polyrabbit/molokai'
-Bundle 'Gundo'
-"Bundle 'liancheng/snipmate-snippets'
-Bundle 'tComment'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-" Bundle 'Lokaltog/vim-powerline'
-Bundle 'skammer/vim-css-color'
-" Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'tpope/vim-fugitive'
-" Bundle 'rosenfeld/conque-term'
-Bundle 'TeTrIs.vim'
+Plugin 'polyrabbit/molokai'
+Plugin 'Gundo'
+"Plugin 'liancheng/snipmate-snippets'
+Plugin 'tComment'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+" Plugin 'Lokaltog/vim-powerline'
+Plugin 'skammer/vim-css-color'
+" Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'rosenfeld/conque-term'
+Plugin 'TeTrIs.vim'
 
-Bundle 'neocomplcache'
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
+
+Plugin 'neocomplcache'
 set completeopt-=preview
 " NeoComplCache
 let g:neocomplcache_enable_at_startup=1
@@ -48,12 +55,12 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_c = '%{getcwd()}/%t'
+let g:airline_section_c = '%F'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " let g:airline_branch_prefix = ' ⎇'
@@ -61,18 +68,17 @@ let g:airline_detect_paste=1
 let g:airline_detect_modified=0
 let g:airline_detect_iminsert=0
 
-
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 " Bind togather, much easier to modify
 let g:EasyMotion_leader_key = ','
 let g:EasyMotion_smartcase = 1
 
-" Bundle 'troydm/easytree.vim'
-" Bundle 'Valloric/YouCompleteMe'
+" Plugin 'troydm/easytree.vim'
+" Plugin 'Valloric/YouCompleteMe'
 
-" Bundle 'SirVer/ultisnips' " worth a try
+" Plugin 'SirVer/ultisnips' " worth a try
 
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
             \ ['brown',       'RoyalBlue3'],
             \ ['Darkblue',    'SeaGreen3'],
@@ -98,15 +104,98 @@ au Syntax   * RainbowParenthesesLoadRound
 au Syntax   * RainbowParenthesesLoadSquare
 au Syntax   * RainbowParenthesesLoadBraces
 
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
-filetype plugin indent on
+" let Tlist_Show_One_File = 1
+" let Tlist_Exit_OnlyWindow = 1
+" let Tlist_Use_Right_Window = 1
+" let Tlist_File_Fold_Auto_Close=1
+" let Tlist_Process_File_Always=0
+" let Tlist_Inc_Winwidth=0
+" let Tlist_GainFocus_On_ToggleOpen = 1
+" let Tlist_Display_Prototype = 1
+" let Tlist_Auto_Open=1
+
+Plugin 'The-NERD-tree'
+" map p to be the key of preview like tagbar
+let g:NERDTreeMapJumpParent = 'gp'
+let g:NERDTreeMapPreview = 'p'
+" for Java
+let g:NERDTreeCasadeOpenSingleChildDir=1
+let g:NERDTreeChDirMode=2
+
+" Plugin 'scrooloose/syntastic'
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_enable_highlighting = 0
+
+autocmd BufRead *.py nmap <leader>r :w<CR>:!python %<CR>
+
+" see http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
+au FileType qf call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
+
+Plugin 'pyflakes.vim'
+" let g:pyflakes_use_quickfix = 1
+
+Plugin 'argtextobj.vim'
+Plugin 'unimpaired.vim'
+" Plugin 'valloric/MatchTagAlways'
+Plugin 'gregsexton/MatchTag'
+
+Plugin 'majutsushi/tagbar'
+" see http://stackoverflow.com/a/5019111
+set tags=./tags,./TAGS,tags;/,TAGS;/  " tagbar creates the tags it needs on-the-fly in-memory without creating any files, so no need to set this now.
+if has("gui_win32")
+    let g:tagbar_ctags_bin="~/ctags.exe"
+end
+" Tagbar uses CursorHold event to toggle autoupdate the current tag, 
+" whose period is updatetime(default 4000)
+set updatetime=1000
+" sorted according to their order in the source file, not by name.
+let g:tagbar_sort = 0
+let g:tagbar_autofocus = 1
+nmap <F3> :TagbarToggle<cr>
+
+nmap <f4> :GundoToggle<cr>
+nmap <F2> :NERDTreeToggle<cr>
+
+Plugin 'kien/ctrlp.vim'
+nmap gb :CtrlPBuffer<cr>
+" let g:ctrlp_by_filename = 1
+let g:ctrlp_follow_symlinks=1
+
+noremap 00 :CtrlPMRU<CR>
+let g:ctrlp_open_multiple_files = 'v'
+let g:ctrlp_mruf_max = 250
+
+Plugin 'fatih/vim-go'
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>s <Plug>(go-def-split)
+au FileType go nmap <Leader>v <Plug>(go-def-vertical)
+au FileType go nmap <Leader>t <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+au FileType go nmap  <leader>r  :w<cr><Plug>(go-run)
+" au FileType go nmap  <leader>b  <Plug>(go-build)
+
+au FileType go nmap <Leader>d <Plug>(go-doc)
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 syntax on
-
-set nocompatible
-
 set rnu
-set nowrap
+set wrap
+set hlsearch
+set incsearch
 
 set tabstop=4
 set shiftwidth=4
@@ -168,72 +257,6 @@ endif
 " highlight SpellBad term=underline gui=undercurl guisp=Orange 
 
 set laststatus=2
-
-" let Tlist_Show_One_File = 1
-" let Tlist_Exit_OnlyWindow = 1
-" let Tlist_Use_Right_Window = 1
-" let Tlist_File_Fold_Auto_Close=1
-" let Tlist_Process_File_Always=0
-" let Tlist_Inc_Winwidth=0
-" let Tlist_GainFocus_On_ToggleOpen = 1
-" let Tlist_Display_Prototype = 1
-" let Tlist_Auto_Open=1
-
-Bundle 'The-NERD-tree'
-" map p to be the key of preview like tagbar
-let g:NERDTreeMapJumpParent = 'gp'
-let g:NERDTreeMapPreview = 'p'
-" for Java
-let g:NERDTreeCasadeOpenSingleChildDir=1
-let g:NERDTreeChDirMode=2
-
-" Bundle 'scrooloose/syntastic'
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_enable_highlighting = 0
-
-autocmd BufRead *.py nmap <leader>r :w<CR>:!python %<CR>
-
-" see http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
-au FileType qf call AdjustWindowHeight(3, 10)
-function! AdjustWindowHeight(minheight, maxheight)
-  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
-endfunction
-
-Bundle 'pyflakes.vim'
-" let g:pyflakes_use_quickfix = 1
-
-Bundle 'argtextobj.vim'
-Bundle 'unimpaired.vim'
-" Bundle 'valloric/MatchTagAlways'
-Bundle 'gregsexton/MatchTag'
-
-Bundle 'majutsushi/tagbar'
-" see http://stackoverflow.com/a/5019111
-set tags=./tags,./TAGS,tags;/,TAGS;/
-if has("gui_win32")
-    let g:tagbar_ctags_bin="~/ctags.exe"
-end
-" Tagbar uses CursorHold event to toggle autoupdate the current tag, 
-" whose period is updatetime(default 4000)
-set updatetime=1000
-" sorted according to their order in the source file, not by name.
-let g:tagbar_sort = 0
-let g:tagbar_autofocus = 1
-nmap <F3> :TagbarToggle<cr>
-
-nmap <f4> :GundoToggle<cr>
-nmap <F2> :NERDTreeToggle<cr>
-
-Bundle 'kien/ctrlp.vim'
-nmap gb :CtrlPBuffer<cr>
-" let g:ctrlp_by_filename = 1
-let g:ctrlp_follow_symlinks=1
-
-noremap 00 :CtrlPMRU<CR>
-let g:ctrlp_open_multiple_files = 'v'
-let g:ctrlp_mruf_max = 250
-
 set wildignore+=*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git)$',
