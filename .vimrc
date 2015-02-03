@@ -8,15 +8,14 @@ filetype off                  " required
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
 
+" Set <leader>, should be ASAP
+let mapleader = ","
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 " let Vundle manage Vundle
 " required! 
 Plugin 'gmarik/vundle'
-
-" Set <leader>
-" search reversely, opposite to ;
-let mapleader = ","
 
 Plugin 'polyrabbit/molokai'
 Plugin 'Gundo'
@@ -32,9 +31,9 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'rosenfeld/conque-term'
 Plugin 'TeTrIs.vim'
 
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
+" Plugin 'davidhalter/jedi-vim'
+" let g:jedi#use_tabs_not_buffers = 0
+" let g:jedi#popup_on_dot = 0
 
 Plugin 'neocomplcache'
 set completeopt-=preview
@@ -51,12 +50,21 @@ let g:neocomplcache_enable_display_parameter = 1
 let g:neocomplcache_enable_wildcard = 1
 let g:neocomplcache_enable_auto_close_preview = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" Enable omni completion.
+" Enable omni completion, from vim builtin
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+" Set for golang
+let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 
 Plugin 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
