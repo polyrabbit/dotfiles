@@ -231,6 +231,7 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
+set mouse=a
 set mousemodel=popup
 " 在状态栏显示正在输入的命令
 set showcmd
