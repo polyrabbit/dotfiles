@@ -52,6 +52,7 @@ git
 tmux
 autojump
 htop
+wget
 caskroom/cask/brew-cask
 )
 python_pkgs=(
@@ -66,7 +67,7 @@ fi
 
 cd `dirname $0`
 
-case $(uname) in
+case $(uname -s) in
     "Darwin")
         which brew &>/dev/null || \
             ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
