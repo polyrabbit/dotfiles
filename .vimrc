@@ -31,16 +31,18 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'rosenfeld/conque-term'
 Plugin 'TeTrIs.vim'
 
-" Plugin 'davidhalter/jedi-vim'
-" let g:jedi#use_tabs_not_buffers = 0
-" let g:jedi#popup_on_dot = 0
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#use_tabs_not_buffers = 0
+" see https://github.com/davidhalter/jedi-vim/issues/258
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+set completeopt-=preview
 
 Plugin 'neocomplcache'
-set completeopt-=preview
 " NeoComplCache
 let g:neocomplcache_enable_at_startup=1
-"let g:neoComplcache_disableautocomplete=1
-let g:neocomplcache_enable_underbar_completion = 1
+let g:neoComplcache_disableautocomplete=1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 1
@@ -51,20 +53,28 @@ let g:neocomplcache_enable_wildcard = 1
 let g:neocomplcache_enable_auto_close_preview = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " Enable omni completion, from vim builtin
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=jedi#completions
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=jedi#completions
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" make neocomplcache use jedi#completions omini function for python scripts
+if !exists('g:neocomplcache_omni_functions')
+    let g:neocomplcache_omni_functions = {}
+    let g:neocomplcache_omni_functions['python'] = 'jedi#completions'
+endif
+" make Vim call omni function when below patterns matchs
 if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
+if !exists('g:neocomplcache_force_omni_patterns')
+    let g:neocomplcache_force_omni_patterns = {}
 endif
 " Set for golang
-let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 
 Plugin 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
@@ -136,8 +146,6 @@ let g:NERDTreeChDirMode=2
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_enable_highlighting = 0
-
-autocmd BufRead *.py nmap <leader>r :w<CR>:!python %<CR>
 
 " see http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
 au FileType qf call AdjustWindowHeight(3, 10)
