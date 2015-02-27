@@ -53,6 +53,7 @@ tmux
 autojump
 htop
 wget
+macvim
 caskroom/cask/brew-cask
 )
 python_pkgs=(

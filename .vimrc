@@ -206,6 +206,7 @@ let g:go_highlight_structs = 1
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+source $VIMRUNTIME/vimrc_example.vim
 
 syntax on
 set rnu
