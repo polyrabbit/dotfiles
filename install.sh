@@ -46,6 +46,7 @@ libevent-dev
 autojump
 ctags
 htop
+curl
 )
 brew_pkgs=(
 git
