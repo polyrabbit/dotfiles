@@ -206,6 +206,16 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
+Plugin 'kshenoy/vim-signature'
+Plugin 'Valloric/YouCompleteMe'
+
+" Plugin 'fholgado/minibufexpl.vim'
+" Move one buffer forward in the most recent used buffer list.
+" map <C-Tab> :MBEbf<cr>
+" map <C-Tab> :MBEbf<cr>
+" Move one buffer backward in the most recent used buffer list.
+" map <C-S-Tab> :MBEbb<cr>
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
