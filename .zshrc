@@ -65,7 +65,6 @@ alias l='ls -CF'
 # fi
 
 alias free='free -m'
-alias http='python -m SimpleHTTPServer'
 alias sudo='sudo -E'
 
 alias tn='notify-send done'

@@ -207,7 +207,6 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 Plugin 'kshenoy/vim-signature'
-Plugin 'Valloric/YouCompleteMe'
 
 " Plugin 'fholgado/minibufexpl.vim'
 " Move one buffer forward in the most recent used buffer list.
