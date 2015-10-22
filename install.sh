@@ -24,14 +24,14 @@ apt_install() {
         info "$1 already exists"
     else
         info "Installing $1"
-        apt-get install "$1" -y
+        sudo apt-get install "$1" -y
         is_success "$1"
     fi
 }
 
 pip_install() {
     info "Installing $1"
-    pip install "$1"
+    sudo pip install "$1"  -i http://pypi.douban.com/simple/
     is_success "$1"
 }
 
@@ -62,10 +62,10 @@ virtualenv
 virtualenvwrapper
 )
 
-if [ $UID -ne 0 ]; then
-    error 'Superuser privileges are required to run this script.'
-    exit 1
-fi
+# if [ $UID -ne 0 ]; then
+#     error 'Superuser privileges are required to run this script.'
+#     exit 1
+# fi
 
 cd `dirname $0`
 
@@ -75,7 +75,7 @@ case $(uname -s) in
             ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         easy_install pip >/dev/null
         for pkg in ${brew_pkgs[@]}; do
-            sudo -u poly brew install $pkg  #TODO
+            brew install $pkg  #TODO
         done
 
         if [[ "$ITERM_PROFILE" == "" ]]; then
