@@ -57,7 +57,7 @@ fi
 
 if [ ${SHELL:(-3)} != zsh ]; then
     info "Changing ${USER}'s shell to zsh"
-    sudo chsh -s /bin/zsh
+    chsh -s /bin/zsh
 fi
 
 if [ -d ~/.vim/bundle/vundle ]; then
