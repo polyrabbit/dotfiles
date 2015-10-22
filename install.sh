@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -o nounset
+# set -o nounset
 # http://www.alittlemadness.com/2006/05/24/bash-tip-exit-on-error/
 # fail fast
 set -o errexit
@@ -31,7 +31,8 @@ apt_install() {
 
 pip_install() {
     info "Installing $1"
-    sudo pip install "$1"  -i http://pypi.douban.com/simple/
+    # sudo pip install "$1"  -i http://pypi.douban.com/simple/
+    sudo -H pip install "$1"
     is_success "$1"
 }
 
@@ -73,7 +74,8 @@ case $(uname -s) in
     "Darwin")
         which brew &>/dev/null || \
             ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        easy_install pip >/dev/null
+        which pip &>/dev/null || \
+            sudo easy_install pip >/dev/null
         for pkg in ${brew_pkgs[@]}; do
             brew install $pkg  #TODO
         done
@@ -99,6 +101,6 @@ for pkg in ${python_pkgs[@]}; do
 done
 
 if ! which git-open &>/dev/null; then
-    curl -o /usr/bin/git-open https://raw.githubusercontent.com/paulirish/git-open/master/git-open
-    chmod +x /usr/bin/git-open
+    sudo curl -o /usr/bin/git-open https://raw.githubusercontent.com/paulirish/git-open/master/git-open
+    sudo chmod +x /usr/bin/git-open
 fi
