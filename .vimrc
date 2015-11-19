@@ -258,6 +258,11 @@ set mousemodel=popup
 set showcmd
 set noerrorbells
 
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
+
 " easy for copy-paste
 nmap ! "+
 vmap ! "+
