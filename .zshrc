@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="fletcherm"
+ZSH_THEME="tjkirch"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -44,7 +44,7 @@ ZSH_THEME="fletcherm"
 plugins=(git pip autojump brew brew-cask sudo osx vagrant virtualenvwrapper golang)
 
 source $ZSH/oh-my-zsh.sh
-export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
+# export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
 
 # Ensure /usr/local/bin occurs before /usr/bin for the sake of Homebrew
 # export PATH=/usr/local/bin:$PATH
