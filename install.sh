@@ -19,12 +19,26 @@ is_success() {
     fi
 }
 
+command_exists() {
+	command -v "$@" > /dev/null 2>&1
+}
+
 apt_install() {
     if dpkg -l "$1" &>/dev/null; then
         info "$1 already exists"
     else
         info "Installing $1"
         sudo apt-get install "$1" -y
+        is_success "$1"
+    fi
+}
+
+yum_install() {
+    if yum -q list installed "$1" &>/dev/null; then
+        info "$1 already exists"
+    else
+        info "Installing $1"
+        sudo yum install "$1" -y
         is_success "$1"
     fi
 }
@@ -39,11 +53,23 @@ pip_install() {
 apt_pkgs=(
 git-core
 zsh
-python-pip
 tmux
 vim
 python-dev
 libevent-dev
+autojump
+ctags
+htop
+curl
+)
+yum_pkgs=(
+epel-release
+git
+zsh
+tmux
+vim
+python-devel
+libevent-devel
 autojump
 ctags
 htop
@@ -85,9 +111,18 @@ case $(uname -s) in
         fi
         ;;
     "Linux")
-        for pkg in ${apt_pkgs[@]}; do
-            apt_install $pkg
-        done
+	if command_exists lsb_release && [ "$(lsb_release -si)"="Ubuntu" ]; then
+            for pkg in ${apt_pkgs[@]}; do
+                apt_install $pkg
+            done
+    	elif [ -r /etc/centos-release ] || [ -r /etc/redhat-release ]; then
+            for pkg in ${yum_pkgs[@]}; do
+                yum_install $pkg
+            done
+	else
+	    echo "Unsupported Linux distro" $(uname)
+	    exit 1
+	fi
         ;;
     *)
         echo "Unsupported OS" $(uname)
@@ -96,11 +131,14 @@ case $(uname -s) in
 esac
 
 # python stuff
+if ! command_exists pip; then
+    curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python
+fi
 for pkg in ${python_pkgs[@]}; do
     pip_install $pkg
 done
 
-if ! which git-open &>/dev/null; then
+if ! command_exists git-open; then
     sudo curl -o /usr/bin/git-open https://raw.githubusercontent.com/paulirish/git-open/master/git-open
     sudo chmod +x /usr/bin/git-open
 fi
