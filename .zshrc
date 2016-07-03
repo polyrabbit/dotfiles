@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="tjkirch"
+ZSH_THEME="tjkirch_mod"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -59,10 +59,10 @@ alias l='ls -CF'
 # CLASSPATH='.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar'
 # export PATH=$JAVA_HOME/bin:$PATH
 
-# if which fcitx >&/dev/null; then
-#     alias gvim='gvim 2>/dev/null'
-#     alias vim='vim 2>/dev/null'
-# fi
+# Should correlate with ZSH_THEME
+PROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%}
+)%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info)
+%_$(prompt_char) '
 
 alias free='free -m'
 alias sudo='sudo -E'
@@ -84,3 +84,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # go
 export GOPATH=~/workspace/go
 export PATH="$PATH:$GOPATH/bin"
+
