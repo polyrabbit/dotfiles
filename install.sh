@@ -58,6 +58,7 @@ vim
 python-dev
 libevent-dev
 autojump
+autojump-zsh
 ctags
 htop
 curl
@@ -71,6 +72,7 @@ vim
 python-devel
 libevent-devel
 autojump
+autojump-zsh
 ctags
 htop
 curl
