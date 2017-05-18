@@ -145,10 +145,15 @@ let g:NERDTreeMapPreview = 'p'
 let g:NERDTreeCasadeOpenSingleChildDir=1
 let g:NERDTreeChDirMode=2
 
-" Plugin 'scrooloose/syntastic'
-" let g:syntastic_check_on_open = 1
+Plugin 'syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
-" let g:syntastic_enable_highlighting = 0
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " see http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
 au FileType qf call AdjustWindowHeight(3, 10)
@@ -156,7 +161,7 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
-Plugin 'pyflakes.vim'
+" Plugin 'pyflakes.vim'
 " let g:pyflakes_use_quickfix = 1
 
 Plugin 'argtextobj.vim'
@@ -222,7 +227,7 @@ source $VIMRUNTIME/vimrc_example.vim
 
 syntax on
 set rnu
-set wrap
+set nowrap
 set hlsearch
 set incsearch
 
@@ -258,10 +263,8 @@ set mousemodel=popup
 set showcmd
 set noerrorbells
 
-if &diff
-    " diff mode
-    set diffopt+=iwhite
-endif
+" diff mode
+set diffopt+=iwhite
 
 " easy for copy-paste
 nmap ! "+
