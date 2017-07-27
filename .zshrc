@@ -6,7 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="tjkirch_mod"
+# ZSH_THEME="tjkirch_mod"
+ZSH_THEME="ys"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -31,7 +32,7 @@ ZSH_THEME="tjkirch_mod"
 # DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
@@ -41,7 +42,7 @@ ZSH_THEME="tjkirch_mod"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip autojump brew brew-cask sudo osx vagrant virtualenvwrapper golang)
+plugins=(git pip autojump zsh-autosuggestions brew sudo osx vagrant virtualenvwrapper golang dotenv)
 
 source $ZSH/oh-my-zsh.sh
 # export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
@@ -50,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=/usr/local/bin:$PATH
 export EDITOR=vim
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -59,10 +60,13 @@ alias l='ls -CF'
 # CLASSPATH='.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar'
 # export PATH=$JAVA_HOME/bin:$PATH
 
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+export ANDROID_HOME=/usr/local/share/android-sdk
+
 # Should correlate with ZSH_THEME
-PROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%}
-)%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info)
-%_$(prompt_char) '
+# PROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%}
+# )%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info)
+# %_$(prompt_char) '
 
 alias free='free -m'
 alias sudo='sudo -E'
@@ -82,6 +86,14 @@ export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # go
-export GOPATH=~/workspace/go
+export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+export LC_ALL=en_US.UTF-8
+
+### Added by the Bluemix CLI
+# source /usr/local/Bluemix/bx/zsh_autocomplete
+# . "~/.acme.sh/acme.sh.env"
