@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="tjkirch_mod"
-ZSH_THEME="ys"
+ZSH_THEME="steeef"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -32,7 +32,7 @@ ZSH_THEME="ys"
 # DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,

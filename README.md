@@ -1,4 +1,5 @@
-#dotfiles
+# dotfiles
+
 ### install.sh
 Copy dotfiles to your home directory.
 
