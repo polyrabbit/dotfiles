@@ -211,6 +211,8 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
+Plugin 'leafgarland/typescript-vim'
+
 Plugin 'kshenoy/vim-signature'
 
 " Plugin 'fholgado/minibufexpl.vim'
