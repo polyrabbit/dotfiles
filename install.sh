@@ -113,7 +113,7 @@ case $(uname -s) in
         fi
         ;;
     "Linux")
-	if command_exists lsb_release && [ "$(lsb_release -si)"="Ubuntu" ]; then
+	if command_exists lsb_release && [ "$(lsb_release -si)" = "Ubuntu" ]; then
             for pkg in ${apt_pkgs[@]}; do
                 apt_install $pkg
             done

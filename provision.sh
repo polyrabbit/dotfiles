@@ -53,6 +53,8 @@ if [ -d ~/.oh-my-zsh ]; then
     info "oh-my-zsh already exists"
 else
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O- | sh
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 fi
 
 if [ ${SHELL:(-3)} != zsh ]; then
