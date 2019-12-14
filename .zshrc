@@ -69,7 +69,7 @@ export ANDROID_HOME=/usr/local/share/android-sdk
 # %_$(prompt_char) '
 
 alias free='free -m'
-alias sudo='sudo -E'
+# alias sudo='sudo -E'
 
 alias tn='notify-send done'
 if [[ $(uname) == "Darwin" ]]; then
@@ -97,3 +97,5 @@ export LC_ALL=en_US.UTF-8
 ### Added by the Bluemix CLI
 # source /usr/local/Bluemix/bx/zsh_autocomplete
 # . "~/.acme.sh/acme.sh.env"
+
+export GOPROXY=https://goproxy.cn
