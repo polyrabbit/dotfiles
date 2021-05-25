@@ -83,8 +83,6 @@ tmux
 autojump
 htop
 wget
-macvim
-caskroom/cask/brew-cask
 )
 python_pkgs=(
 virtualenv
@@ -140,7 +138,3 @@ for pkg in ${python_pkgs[@]}; do
     pip_install $pkg
 done
 
-if ! command_exists git-open; then
-    sudo curl -o /usr/bin/git-open https://raw.githubusercontent.com/paulirish/git-open/master/git-open
-    sudo chmod +x /usr/bin/git-open
-fi
