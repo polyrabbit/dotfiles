@@ -47,6 +47,19 @@ plugins=(git pip autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo 
 source $ZSH/oh-my-zsh.sh
 # export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
 
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
+
 # Ensure /usr/local/bin occurs before /usr/bin for the sake of Homebrew
 # export PATH=/usr/local/bin:$PATH
 export EDITOR=vim
