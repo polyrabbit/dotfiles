@@ -42,7 +42,7 @@ COMPLETION_WAITING_DOTS="false"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo osx virtualenvwrapper golang dotenv)
+plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo macos golang dotenv)
 
 source $ZSH/oh-my-zsh.sh
 # export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '

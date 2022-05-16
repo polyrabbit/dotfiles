@@ -100,8 +100,6 @@ case $(uname -s) in
     "Darwin")
         which brew &>/dev/null || \
             ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        which pip &>/dev/null || \
-            sudo easy_install pip >/dev/null
         for pkg in ${brew_pkgs[@]}; do
             brew install $pkg  #TODO
         done
@@ -131,10 +129,10 @@ case $(uname -s) in
 esac
 
 # python stuff
-if ! command_exists pip; then
-    curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python
-fi
-for pkg in ${python_pkgs[@]}; do
-    pip_install $pkg
-done
-
+# if ! command_exists pip; then
+    # curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python
+# fi
+# for pkg in ${python_pkgs[@]}; do
+#     pip_install $pkg
+# done
+#
