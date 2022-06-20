@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -7,7 +14,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="tjkirch_mod"
-ZSH_THEME="steeef"
+#ZSH_THEME="steeef"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -42,7 +50,7 @@ COMPLETION_WAITING_DOTS="false"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo macos golang dotenv)
+plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo macos golang dotenv rust)
 
 source $ZSH/oh-my-zsh.sh
 # export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
@@ -81,7 +89,7 @@ export ANDROID_HOME=/usr/local/share/android-sdk
 # )%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info)
 # %_$(prompt_char) '
 
-alias free='free -m'
+alias free='free -h'
 # alias sudo='sudo -E'
 
 alias tn='notify-send done'
@@ -112,3 +120,6 @@ export LC_ALL=en_US.UTF-8
 # . "~/.acme.sh/acme.sh.env"
 
 export GOPROXY=https://goproxy.cn
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
