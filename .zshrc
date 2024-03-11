@@ -50,7 +50,7 @@ COMPLETION_WAITING_DOTS="false"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo macos golang dotenv rust)
+plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting brew sudo macos golang dotenv rust fzf)
 
 source $ZSH/oh-my-zsh.sh
 # export PROMPT='%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}•%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
@@ -89,7 +89,7 @@ export ANDROID_HOME=/usr/local/share/android-sdk
 # )%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info)
 # %_$(prompt_char) '
 
-alias free='free -h'
+#alias free='free -h'
 # alias sudo='sudo -E'
 
 alias tn='notify-send done'
@@ -102,9 +102,6 @@ fi
 function gcp { git commit $@ && git push }
 
 export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # go
 export GOPATH=$HOME/go
@@ -123,3 +120,11 @@ export GOPROXY=https://goproxy.cn
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+#eval "$(atuin init zsh)"
+
+PATH=$PATH:$HOME/bin

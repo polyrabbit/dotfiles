@@ -62,6 +62,7 @@ autojump-zsh
 ctags
 htop
 curl
+fzf
 )
 yum_pkgs=(
 epel-release
@@ -83,6 +84,8 @@ tmux
 autojump
 htop
 wget
+pyenv
+fzf
 )
 python_pkgs=(
 virtualenv
